@@ -62,5 +62,10 @@ Le développement d'une application mobile entraine des contraintes dues au mate
 
 Afin que notre couche modèle puisse être réutilisée dans un contexte n'entrainant pas l'utilisation d'un cache, nous avons fait attention à séparer les classes responsables de ce cache des autres classes modèles. Cette problématique nous a tout d'abord conduit à séparer la gestion des coupes de l'Examen proprement dit à travers l'interface \verb+SliceManager+. Nous avons ensuite pu réaliser l'implémentation du cache indépendamment du modèle. La bibliothèque android contenant déjà un système de cache, nous avons décidé de l'utiliser pour implémenter \verb+SliceManager+. De cette façon, une seule classe de notre système de cache dépend d'android. Enfin, nous utilisons une nouvelle \verb+ModelFactory+ héritant de \verb+DefaultModelFactory+ afin de faire la liaison entre le modèle et le cache.
 
-%insérer ici le diagramme
-%voir commentaires supplémentaires en fonction du diagramme
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=11cm]{diagramme-classes-cache}
+\end{center}
+	\caption{Diagramme de classes du système de cache}
+	\label{classes-cache}
+\end{figure}
