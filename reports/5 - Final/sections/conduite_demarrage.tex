@@ -1,43 +1,42 @@
 \section{Environnement de développement}
+
 \subsection{IDE}
-Eclipse est la référence pour le développement sous Android, le système d'exploitation visé. De plus il est multi-plateforme et résout le problème de l'utilisation de différents systèmes d'exploitation par les membres de l'équipe de développement.
-Son système de plugins permet de gérer tout le kit de développement Android. Nous utilisons également le DDMS (Dalvik Debug Monitor Server), qui permet de détecter et de résoudre des bugs tout en interagissant avec le système. 
+\emph{Eclipse} est la référence pour le développement sur \emph{android}, le système d'exploitation visé. \emph{Eclipse} est multi-plateforme et résout le problème de l'utilisation de différents systèmes d'exploitation par les membres de l'équipe de développement.
+Son système de plugins permet de gérer le déploiement de tout le kit de développement \emph{android}. Nous utilisons également le DDMS (Dalvik Debug Monitor Server), qui permet de détecter et de résoudre des bogues tout en interagissant avec le système. 
 
 \subsection{Style de codage}
-Une convention de codage a été mise en place pour assurer une plus grande cohérence au sein de l'équipe, cette convention est partie intégrante de la documentation développeur.
+Une convention de codage a été mise en place pour assurer une plus grande cohérence au sein de l'équipe. Cette convention est partie intégrante de la documentation développeur.
 
 \subsection{Matériel de déploiement}
-Nous utilisons une tablette tactile pour le déploiement de notre application. Cette tablette possède la version Android 2.1(API 7), qui n'est pas la plus récente. Par conséquent, certains services récents ne sont pas accessibles. 
-%le fichier de convention je le cite dans la biblio ? --> Non.
+Nous utilisons une tablette tactile pour le déploiement de notre application. Cette tablette possède la version \emph{android} 2.1 (API 7), qui n'est pas la plus récente. Par conséquent, certains services récents ne sont pas accessibles.
 
-\section{Outils de versionnage}
+\section{Outils de versionnage et techniques d'intégration}
 Le code est versionné sous git, pour que chacun dispose de son propre serveur. Cela procure l'avantage de réduire les \textbf{risques de conflits}. Le serveur web que nous avons choisi 
-d'utiliser est GitHub. Il nous propose un traqueur de bogues, un système de commentaires du code pour un meilleur suivi du projet et un outil de visualisation de l'activité du projet sous forme de graphes d'arborescences. En sur-couche graphique de git, nous utilisons le logiciel Smartgit. Il propose des outils de comparaison de code et des
+d'utiliser est GitHub. Il nous propose un traqueur de bogues, un système de commentaires du code pour un meilleur suivi du projet et un outil de visualisation de l'activité du projet sous forme de graphes d'arborescences. En sur-couche graphique de git, nous utilisons le logiciel \emph{Smartgit}. Il propose des outils de comparaison de code et des
 journaux visuels.
 Nous versionnons le code en utilisant la méthode \textbf{PULL then PUSH} : seul le \textbf{Scrum Master} possède le droit d'intégrer des
 sources sur la branche master (branche principale). Les autres membres envoient leurs versions sur d'autres
 branches, mais seul le scrum master peut réaliser des fusions entre d'autres branches et la branche master. Les
-autres développeurs peuvent demander une intégration de leurs modifications sur la branche principale. Nous utilisons ce système de branches pour séparer ce qui est en développement de ce qui est en phase d'intégration. L'arborescence représente aussi la répartition des fonctionnalités.
-Afin de faciliter la mise en place et le travail nous avons décidé d'utiliser des outils d'automatisation.
+autres développeurs peuvent demander une intégration de leurs modifications sur la branche principale par des \emph{pull requests}. Nous utilisons ce système de branches pour séparer ce qui est en développement de ce qui est en phase d'intégration. L'arborescence représente aussi la répartition des fonctionnalités. Nous intégrons le travail régulièrement et par petites itérations pour éviter les pertes de temps liées à l'introduction de conflits.
 
 \section{Serveurs d'automatisations}
 
 \subsection{Maven : déploiement et dépendances}
-Maven est un outil puissant permettant d'automatiser la mise en place d'un projet Java. Il gère la gestion des dépendances et des librairies utilisées. Cependant suite à des problèmes d'incompatibilité entre la version d'Android utilisée et le système de templates de Maven, nous avons dû renoncer à l'utiliser.
-L'alternative utilisée est l'outil Ant et le générateur d'APK de Google (Application Package File) permettant d'installer des logiciels sous Android. Les dépendances sont gérées manuellement, ce qui ne pose pas de problème quand le nombre de dépendances est faible.
+Maven est un outil puissant permettant d'automatiser la mise en place d'un projet Java. Il gère les dépendances et les librairies utilisées. Cependant suite à des problèmes d'incompatibilité entre la version d'\emph{android} utilisée et le système de templates de Maven, nous avons dû renoncer à l'utiliser.
+L'alternative utilisée est l'outil \emph{Ant} et le générateur d'APK de Google (Application Package File) permettant d'installer des logiciels sous \emph{android}. Les dépendances sont gérées manuellement, ce qui ne pose pas de problème car leur nombre est faible.
 
 \subsection{Jenkins : tests et compilation}
 Jenkins est un outil permettant via un serveur de réaliser automatiquement des tests. A chaque archivage du code, Jenkins peut exécuter les tests pour lesquels il est configuré et génère
 un compte-rendu ainsi que des journaux détaillés. La prise en main de Jenkins a nécessité du temps et son exécution
-se fait en local. Nous avons considéré et abandonné l'alternative proposée au CREMI, où le serveur est configuré pour fonctionner sur Savane, qui n'utilise pas git mais svn.
+se fait en local. Nous avons considéré et abandonné l'alternative proposée au CREMI, où le serveur est configuré pour fonctionner sur Savane, qui n'utilise pas git mais svn, un outil de versionnage moins puissant.
 
 \section{Analyse de code}
 
-Le projet est en Java, par conséquent le garbage collector gère la mémoire. Toutefois, étant donné que l'application doit 
+Le projet est en Java, par conséquent la mémoire est gérer par un garbage collector. Toutefois, étant donné que l'application doit 
 fonctionner sur une tablette, il est nécessaire d'éviter de surcharger cette mémoire (ouvrir trop de fichiers en même temps par exemple). Les outils d'analyse de code aident à éviter les mauvaises pratiques qui génèrent des fuites mémoire.
 \subsection{Sonar}
 Sonar permet une analyse poussée du code (duplications de code, détection de bogues, couverture par des tests etc.) mais il est basé sur Maven. Par conséquent nous ne pouvons pas l'utiliser. Ainsi nous nous sommes orientés vers un autre outil.
 
 \subsection{Lint}
-Lint permet la détection de certaines erreurs de conception types et précise si des éléments sont
-obsolètes par rapport à l'API visé, le but étant d'améliorer la lisibilité, la sécurité, la performance du code...
+Lint, spécifique à \emph{android}, permet la détection de certaines erreurs de conception types et précise si des éléments sont
+obsolètes par rapport à l'API visé, le but étant d'améliorer la lisibilité, la sécurité, la performance du code etc.
