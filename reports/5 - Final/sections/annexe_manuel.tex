@@ -1,5 +1,12 @@
 \section{Installation}
 
+L'application peut être déployée directement à partir des sources avec le logiciel \emph{Eclipse} et le plugin de développement \emph{android} en branchant le périphérique tactile à l'ordinateur, ou via l'apk généré à partir des sources à l'aide du même système. Pour déployer l'application sans l'apk, votre appareil doit être connecté à l'ordinateur au moment du lancement de l'application à partir d'\emph{Eclipse} etvous devez sélectonner votre appareil comme support d'exécution de l'application. Pour générer un fichier apk, exportez les sources au format apk proposé par le plugin \emph{android} en passant par le menu \emph{"fichier"
+->"exporter"}. Pour déployer l'application à partir du fichier apk, copiez le fichier sur la carte SD de votre appareil \emph{android}, trouvez le en utilisant l'explorateur de fichier d'\emph{android} et cliquez sur l'apk. Votre système vous proposera alors d'installer l'application et elle apparaîtra ensuite dans le menu des applications. Vous pourrez l'ouvrir en cliquant sur son icône.
+
+\begin{note}
+Vos fichiers DICOM doivent être copiés sur la carte SD de votre appareil pour être visibles dans l'application. Vous devez conserver la structure de dossiers de vos examens DICOM pour que ceux-ci soient lisibles par l'application. Tout autre format ne respectant pas cette règle pourrait ne pas être pris en charge.
+\end{note}
+
 \section{Ouvrir un examen}
 
 Au démarrage de l'application, vous arrivez sur l'écran d'exploration des fichiers. Avec l'explorateur, vous pouvez visualiser les dossiers contenus dans la carte SD de votre appareil. En cliquant sur un dossier quelconque, vous en visualisez le contenu. Pour revenir en arrière, appuyez sur le dossier "..". Pour ouvrir un examen, déplacez vous dans le dossier qui le contient, et cliquez sur le nom du patient qui s'affiche alors dans la liste (exemple en figure \vref{fichiers}).
